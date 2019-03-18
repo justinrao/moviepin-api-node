@@ -20,6 +20,15 @@ app.use(morgan('dev'));
 
 app.use(require('./routes'));
 
+// Handle errors
+app.use((err, req, res, next) => {
+  if (! err) {
+      return next();
+  }
+  res.status(500);
+  res.json(err);
+});
+
 app.listen(config.port, () => {
   console.log(`Movie PIN API started running on ${PORT}`)
 }); ``

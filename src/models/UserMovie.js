@@ -1,3 +1,4 @@
+const uuid = require('uuid');
 
 const USER_MOVIES = [
   {
@@ -15,6 +16,11 @@ const USER_MOVIES = [
 
 const getUserMovies = () => USER_MOVIES;
 
+const createUserMovie = (userMovie) => {
+  return {...userMovie, id: uuid()}
+}
+
 module.exports = {
-  getUserMovies
+  getUserMovies,
+  createUserMovie
 }

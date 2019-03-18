@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Movie PIN API",
+    "description": "Movie PIN API Node/Express Implementation",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User Movie",
+      "description": "API for user movie comment and rating"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/usermovies": {
+      "post": {
+        "tags": [
+          "User Movie"
+        ],
+        "summary": "Create new User Movie",
+        "parameters": [
+          {
+            "name": "userMovie",
+            "in": "body",
+            "description": "User Movie details",
+            "schema": {
+              "$ref": "#/definitions/UserMovie"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/UserMovie"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User Movie"
+        ],
+        "summary": "Find all User Movie for a specific user",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID of the user",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserMovies"
+            }
+          }
+        }
+      }
+    },
+    "/usermovies/{userMovieId}": {
+      "get": {
+        "tags": [
+          "User Movie"
+        ],
+        "summary": "Get User Movie by ID",
+        "parameters": [
+          {
+            "name": "userMovieId",
+            "in": "path",
+            "required": true,
+            "description": "ID of userMovie to find",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserMovie"
+            }
+          },
+          "404": {
+            "description": "User Movie Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User Movie"
+        ],
+        "summary": "Update a User Movie",
+        "parameters": [
+          {
+            "name": "userMovieId",
+            "in": "path",
+            "required": true,
+            "description": "ID of userMovie to update",
+            "type": "string"
+          },
+          {
+            "name": "userMovie",
+            "in": "body",
+            "description": "User Movie details",
+            "schema": {
+              "$ref": "#/definitions/UserMovie"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserMovie"
+            }
+          },
+          "404": {
+            "description": "User Movie Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserMovie": {
+      "required": [
+        "_id",
+        "userId",
+        "movieId",
+        "rating"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "userId": {
+          "type": "string"
+        },
+        "movieId": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        }
+      }
+    },
+    "UserMovies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/UserMovie"
+      }
+    }
+  }
+}

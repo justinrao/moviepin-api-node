@@ -1,6 +1,13 @@
 ### MoviePIN API Node impelementaiton
 Sample code to implement the Movie PIN API in node & express
 
+### API
+- /api/usermovies
+ - create, retrieve and update user's rating to movies
+
+### DOC
+- /api-docs
+  - Swagger documentation
 
 ### Tech Stack
 - Node.js: runtime
@@ -9,4 +16,5 @@ Sample code to implement the Movie PIN API in node & express
   - body-parser: Request body parsing
   - cors: handle CORS
   - morgan: server side logging
-- Database: Mongoose / Mongo
+- Mongoose / Mongo： Database
+- OpenAPI / Swagger: API documentation

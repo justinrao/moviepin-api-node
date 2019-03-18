@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const UserMovie = require('../../models/UserMovie')
 const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
 
 router.get('/', (req, res, next) => {
 
@@ -17,7 +18,7 @@ router.get('/:userMovieId', (req, res, next) => {
   UserMovie.findById(req.params.userMovieId)
     .then(userMovie => {
       if (!userMovie) {
-        return res.status(404);
+        return res.send(404);
       }
       return res.status(200).json(userMovie);
     })
@@ -39,14 +40,15 @@ router.post('/', (req, res, next) => {
 })
 
 router.put('/:userMovieId', (req, res, next) => {
-  console.log('req.params.userMovieId', req.params.userMovieId);
-  console.log('req.body', req.body);
   UserMovie.findByIdAndUpdate(
     req.params.userMovieId,
     req.body,
     { new: true }
   )
     .then((result) => {
+      if (!result) {
+        res.send(404);
+      }
       res.json(result)
     })
     .catch(err => next(err))

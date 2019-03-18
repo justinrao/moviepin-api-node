@@ -1,26 +1,10 @@
-const uuid = require('uuid');
+const mongoose = require('mongoose');
 
-const USER_MOVIES = [
-  {
-    userId: '1',
-    movieId: '1',
-    rating: 5
-  },
+const userMovieSchema = mongoose.Schema({
+  _id: mongoose.Types.ObjectId,
+  movieId: String,
+  userId: String,
+  raring: Number
+})
 
-  {
-    userId: '2',
-    movieId: '3',
-    rating: 0
-  }
-]
-
-const getUserMovies = () => USER_MOVIES;
-
-const createUserMovie = (userMovie) => {
-  return {...userMovie, id: uuid()}
-}
-
-module.exports = {
-  getUserMovies,
-  createUserMovie
-}
+module.exports = mongoose.model('UserMovie', userMovieSchema); 

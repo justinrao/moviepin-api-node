@@ -1,7 +1,12 @@
 ### MoviePIN API Node impelementaiton
+Sample code to implement the Movie PIN API in node & express
 
 
 ### Tech Stack
-
-- Runtime: Node.js
-- Web Framework: Express.js
+- Node.js: runtime
+- Express.js: web framework
+- Express middlewares:
+  - body-parser: Request body parsing
+  - cors: handle CORS
+  - morgan: server side logging
+- Database: Mongoose / Mongo

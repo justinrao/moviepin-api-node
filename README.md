@@ -2,7 +2,7 @@
 Sample code to implement the Movie PIN API in node & express
 
 ### Live Deployment in Heroku
-https://moviepin-api-node.herokuapp.com/api/v1/
+https://moviepin-api-node.herokuapp.com/api-docs/
 
 ### API
 - /api/usermovies
